@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">ProjectPlanner</string>
+    <string name="under_construction">Oops this feature is still under development ):</string>
+    <!-- hints -->
+    <string name="edit_message">Enter a message</string>
+    <string name="new_project_enter_name_hint">Enter project name</string>
+    <!-- buttons -->
+    <string name="button_send">Send</string>
+    <string name="button_create">Create</string>
+    <string name="button_next">Next</string>
+    <string name="button_new_project">New Project</string>
+    <string name="button_my_projects">My Projects</string>
 </resources>
