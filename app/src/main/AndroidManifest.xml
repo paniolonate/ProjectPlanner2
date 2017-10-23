@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,21 +18,30 @@
         </activity>
         <activity
             android:name=".NewProjectActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".HomeActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".HomeActivity" />
         </activity>
         <activity
             android:name=".ListProjectsActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".HomeActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".HomeActivity" />
+        </activity>
+        <activity
+            android:name=".EmailPasswordActivity"
+            android:parentActivityName=".HomeActivity">
+
+            !-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
         </activity>
     </application>
 

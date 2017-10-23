@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.nate.projectplanner.HomeActivity">
+
+    <LinearLayout
+        android:id="@+id/signed_out_buttons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:visibility="visible"
+        >
+
+        <Button
+            android:id="@+id/email_sign_in_button"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:onClick="loginEmailPassword"
+            android:text="@string/button_sign_in"
+            android:theme="@style/ThemeOverlay.MyDarkButton" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/signed_in_buttons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:weightSum="2.0"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="160dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        >
+
+        <Button
+            android:id="@+id/button_new_project"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="newProject"
+            android:text="@string/button_new_project"
+            android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+        <Button
+            android:id="@+id/button_list_projects"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="listProjects"
+            android:text="@string/button_my_projects"
+            android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+        <Button
+            android:id="@+id/button_sign_out"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="signOut"
+            android:text="@string/button_sign_out"
+            android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
