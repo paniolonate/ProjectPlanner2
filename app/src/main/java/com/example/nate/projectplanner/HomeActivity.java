@@ -44,9 +44,6 @@ public class HomeActivity extends BaseActivity {
 //        mNewProjectButton.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
-
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        updateUI(currentUser);
     }
 
     @Override
@@ -83,16 +80,10 @@ public class HomeActivity extends BaseActivity {
         if (user != null) { // signed in
             mSignedInLayout.setVisibility(View.VISIBLE);
             mSignedOutLayout.setVisibility(View.GONE);
-//            mEmailSignInButton.setVisibility(View.GONE);
-//            mListProjectsButton.setVisibility(View.VISIBLE);
-//            mNewProjectButton.setVisibility(View.VISIBLE);
 
         } else { // signed out
             mSignedInLayout.setVisibility(View.GONE);
             mSignedOutLayout.setVisibility(View.VISIBLE);
-//            mEmailSignInButton.setVisibility(View.VISIBLE);
-//            mListProjectsButton.setVisibility(View.GONE);
-//            mNewProjectButton.setVisibility(View.GONE);
         }
     }
 

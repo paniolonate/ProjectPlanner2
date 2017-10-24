@@ -7,7 +7,7 @@
     tools:context="com.example.nate.projectplanner.NewProjectActivity">
 
     <EditText
-        android:id="@+id/editTextNewProjectName"
+        android:id="@+id/edittext_new_project_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -24,15 +24,15 @@
         android:layout_marginTop="16dp" />
 
     <Button
-        android:id="@+id/buttonCreateNewProject"
+        android:id="@+id/button_create_new_project"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:onClick="createNewProject"
         android:text="@string/button_create"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editTextNewProjectName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edittext_new_project_name"
         app:layout_constraintHorizontal_bias="0.357"
-        app:layout_constraintLeft_toRightOf="@+id/editTextNewProjectName"
+        app:layout_constraintLeft_toRightOf="@+id/edittext_new_project_name"
         app:layout_constraintRight_toRightOf="parent" />
 </android.support.constraint.ConstraintLayout>

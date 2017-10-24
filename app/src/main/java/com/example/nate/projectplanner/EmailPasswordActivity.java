@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nate.projectplanner.database.DatabaseManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,6 +26,7 @@ public class EmailPasswordActivity extends BaseActivity implements OnClickListen
     private EditText mEmailField;
     private EditText mPasswordField;
 
+    private DatabaseManager mDatabaseManager;
     private FirebaseAuth mAuth;
 
     @Override
@@ -45,6 +47,7 @@ public class EmailPasswordActivity extends BaseActivity implements OnClickListen
         findViewById(R.id.verify_email_button).setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+        mDatabaseManager = new DatabaseManager();
 
     }
 
@@ -72,7 +75,7 @@ public class EmailPasswordActivity extends BaseActivity implements OnClickListen
         }
     }
 
-    private void createAccount(String email, String password) {
+    private void createAccount(final String email, final String password) {
         Log.d(TAG, "createAccount:" + email);
         if (!validateForm()) {
             return;
@@ -88,6 +91,10 @@ public class EmailPasswordActivity extends BaseActivity implements OnClickListen
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
+
+                            String userId = mDatabaseManager.getCurrentUserId(); // TODO encapsulate mAuth into mDatabaseManager
+                            mDatabaseManager.addNewUser(userId, email);
+
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                         } else {
