@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "916984261865",
+    "firebase_url": "https://projectplanner-543c7.firebaseio.com",
+    "project_id": "projectplanner-543c7",
+    "storage_bucket": "projectplanner-543c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916984261865:android:3214fa08d90b0060",
+        "android_client_info": {
+          "package_name": "com.example.nate.projectplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "916984261865-3kvmqolpi62ngu6trstkmta6jf6eod6m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nate.projectplanner",
+            "certificate_hash": "9b884c949d3ee829cbe4f4ff9bbb6e251f096fd4"
+          }
+        },
+        {
+          "client_id": "916984261865-phink446apod9pv8aqi7u4628om5khbd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3D8j_B-FhrEe_Wvd2VOh0i7BOatu04Os"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "916984261865-phink446apod9pv8aqi7u4628om5khbd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
