@@ -37,11 +37,26 @@
         <activity
             android:name=".EmailPasswordActivity"
             android:parentActivityName=".HomeActivity">
-
             !-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomeActivity" />
+        </activity>
+        <activity
+            android:name=".ManageProjectActivity"
+            android:parentActivityName=".ListProjectsActivity">
+            !-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ListProjectsActivity" />
+        </activity>
+        <activity
+            android:name=".NewEventActivity"
+            android:parentActivityName=".ManageProjectActivity">
+            !-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ManageProjectActivity" />
         </activity>
     </application>
 

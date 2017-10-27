@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.nate.projectplanner.database.DatabaseManager;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +24,9 @@ public class NewProjectActivity extends BaseActivity {
 
     private static final String TAG = "NewProjectActivity";
     private static final String REQUIRED = "Required";
+
+    // Authentication Handler
+    FirebaseAuth mAuth;
 
     // DatabaseManager
     DatabaseManager mDatabaseManager;
@@ -38,9 +42,8 @@ public class NewProjectActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_project);
 
-        Intent intent = getIntent();
-
         mDatabaseManager = new DatabaseManager();
+        mAuth = FirebaseAuth.getInstance();
 
         mCreateNewProjectButton = (Button) findViewById(R.id.button_create_new_project);
         mNewProjectNameEditText = (EditText) findViewById(R.id.edittext_new_project_name);
@@ -57,7 +60,7 @@ public class NewProjectActivity extends BaseActivity {
         mNewProjectNameEditText.setEnabled(false);
         Toast.makeText(this, "Creating new project...", Toast.LENGTH_SHORT).show();
 
-        final String userId = mDatabaseManager.getCurrentUserId();
+        final String userId = mAuth.getCurrentUser().getUid(); // TODO catch exception
         mDatabaseManager.fetchUser(userId).addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
@@ -73,11 +76,12 @@ public class NewProjectActivity extends BaseActivity {
                                     Toast.LENGTH_SHORT).show();
                         } else {
                             // Create new project under the user
-                            mDatabaseManager.addNewProject(userId, projectName);
+                            String projectId = mDatabaseManager.addNewProject(userId, projectName);
+                            mNewProjectNameEditText.setEnabled(true); // TODO is this necessary?
+                            // Start ManageProjectActivity
+                            manageNewProject(projectId);
                         }
 
-                        // Finish this Activity // TODO start EditProjectActivity instead
-                        mNewProjectNameEditText.setEnabled(true);
                         finish();
                     }
 
@@ -87,5 +91,11 @@ public class NewProjectActivity extends BaseActivity {
                         mNewProjectNameEditText.setEnabled(true);
                     }
                 });
+    }
+
+    private void manageNewProject(String projectId) {
+        Intent intent = new Intent(this, ManageProjectActivity.class);
+        intent.putExtra("ProjectId", projectId);
+        startActivity(intent);
     }
 }

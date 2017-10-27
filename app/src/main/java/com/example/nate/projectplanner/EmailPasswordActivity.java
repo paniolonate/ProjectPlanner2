@@ -54,11 +54,8 @@ public class EmailPasswordActivity extends BaseActivity implements OnClickListen
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-        // Update UI accordingly
-        updateUI(currentUser);
+        // Check if user is signed in and update UI accordingly
+        updateUI(mAuth.getCurrentUser());
     }
 
     @Override
@@ -83,7 +80,6 @@ public class EmailPasswordActivity extends BaseActivity implements OnClickListen
 
         showProgressDialog();
 
-        // [START create_user_with_email]
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -92,10 +88,8 @@ public class EmailPasswordActivity extends BaseActivity implements OnClickListen
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
 
-                            String userId = mDatabaseManager.getCurrentUserId(); // TODO encapsulate mAuth into mDatabaseManager
-                            mDatabaseManager.addNewUser(userId, email);
-
                             FirebaseUser user = mAuth.getCurrentUser();
+                            mDatabaseManager.addNewUser(user.getUid(), email); // TODO catch exception
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -105,12 +99,9 @@ public class EmailPasswordActivity extends BaseActivity implements OnClickListen
                             updateUI(null);
                         }
 
-                        // [START_EXCLUDE]
                         hideProgressDialog();
-                        // [END_EXCLUDE]
                     }
                 });
-        // [END create_user_with_email]
     }
 
     private boolean validateForm() {
@@ -143,7 +134,6 @@ public class EmailPasswordActivity extends BaseActivity implements OnClickListen
 
         showProgressDialog();
 
-        // [START sign_in_with_email]
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -161,15 +151,12 @@ public class EmailPasswordActivity extends BaseActivity implements OnClickListen
                             updateUI(null);
                         }
 
-                        // [START_EXCLUDE]
                         if (!task.isSuccessful()) {
                             mStatusTextView.setText(R.string.auth_failed);
                         }
                         hideProgressDialog();
-                        // [END_EXCLUDE]
                     }
                 });
-        // [END sign_in_with_email]
     }
 
     private void signOut() {
@@ -182,13 +169,11 @@ public class EmailPasswordActivity extends BaseActivity implements OnClickListen
         findViewById(R.id.verify_email_button).setEnabled(false);
 
         // Send verification email
-        // [START send_email_verification]
         final FirebaseUser user = mAuth.getCurrentUser();
         user.sendEmailVerification()
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        // [START_EXCLUDE]
                         // Re-enable button
                         findViewById(R.id.verify_email_button).setEnabled(true);
 
@@ -202,10 +187,8 @@ public class EmailPasswordActivity extends BaseActivity implements OnClickListen
                                     "Failed to send verification email.",
                                     Toast.LENGTH_SHORT).show();
                         }
-                        // [END_EXCLUDE]
                     }
                 });
-        // [END send_email_verification]
     }
 
     private void updateUI(FirebaseUser user) {

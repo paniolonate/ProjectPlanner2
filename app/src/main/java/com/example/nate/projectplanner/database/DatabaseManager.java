@@ -1,5 +1,7 @@
 package com.example.nate.projectplanner.database;
 
+import android.provider.ContactsContract;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -11,15 +13,17 @@ public class DatabaseManager {
 
     private static final String TAG = "DatabaseManager";
 
-    // Databases
+    // Database
     private DatabaseReference mDatabase;
-    private FirebaseAuth mAuth;
 
 
     public DatabaseManager() {
         // Default constructor
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mAuth = FirebaseAuth.getInstance();
+    }
+
+    public DatabaseReference fetchProject(String projectId) {
+        return mDatabase.child("projects").child(projectId);
     }
 
     public DatabaseReference fetchUser(String userId) {
@@ -30,20 +34,22 @@ public class DatabaseManager {
         return mDatabase.child("user-projects").child(userId);
     }
 
-    public void addNewUser(String userId, String email, String name) {
+    public User addNewUser(String userId, String email, String name) {
         User user = new User(name, email);
-
         mDatabase.child("users").child(userId).setValue(user);
+
+        return user;
     }
 
-    public void addNewUser(String userId, String email) {
+    public User addNewUser(String userId, String email) {
         User user = new User(email);
-
         mDatabase.child("users").child(userId).setValue(user);
+
+        return user;
     }
 
-    public void addNewProject(String userId, String projectName) {
-        // Create new post at /user-projects/$userid/$projectid and at
+    public String addNewProject(String userId, String projectName) {
+        // Create new project at /user-projects/$userid/$projectid and at
         // /projects/$projectid simultaneously
         String projectId = mDatabase.child("projects").push().getKey();
         Project project = new Project(userId, projectName);
@@ -54,9 +60,21 @@ public class DatabaseManager {
         childUpdates.put("/user-projects/" + userId + "/" + projectId, projectValues);
 
         mDatabase.updateChildren(childUpdates);
+
+        return projectId;
     }
 
-    public String getCurrentUserId() {
-        return FirebaseAuth.getInstance().getCurrentUser().getUid();
+    public String addNewEvent(String projectId, String eventName) {
+        DatabaseReference projectRef = mDatabase.child("projects").child(projectId);
+        String eventId = projectRef.push().getKey();
+        Event event = new Event(eventName);
+        Map<String, Object> eventValues = event.toMap();
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/projects/" + projectId + "/" + "events/" + eventId, eventValues);
+
+        mDatabase.updateChildren(childUpdates);
+
+        return eventId;
     }
 }
