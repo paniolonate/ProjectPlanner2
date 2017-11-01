@@ -1,5 +1,6 @@
 package com.example.nate.projectplanner;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -73,11 +74,11 @@ public class NewEventActivity extends BaseActivity {
                                     "Error: could not fetch project.",
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            // Create new project under the user
-                            String projectId = mDatabaseManager.addNewEvent(parentProjectId, eventName);
+                            // Create new event
+                            String eventId = mDatabaseManager.addNewEvent(parentProjectId, eventName);
                             mNewEventNameEditText.setEnabled(true); // TODO is this necessary?
                             // Start ManageEventActivity
-//                            manageNewEvent(projectId);
+                            manageNewEvent(eventId);
                         }
 
                         finish();
@@ -90,5 +91,12 @@ public class NewEventActivity extends BaseActivity {
                     }
                 }
         );
+    }
+
+    private void manageNewEvent(String eventId) {
+        Intent intent = new Intent(this, ManageEventActivity.class);
+        intent.putExtra("projectId", parentProjectId);
+        intent.putExtra("eventId", eventId);
+        startActivity(intent);
     }
 }

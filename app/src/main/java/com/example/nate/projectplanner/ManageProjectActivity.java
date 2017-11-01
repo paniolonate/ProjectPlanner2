@@ -17,6 +17,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.List;
+
 public class ManageProjectActivity extends BaseActivity {
 
     private static final String TAG = "ManageProjectActivity";
@@ -52,12 +54,18 @@ public class ManageProjectActivity extends BaseActivity {
                         eventNamesListView.setAdapter(Converters.convertSnapshotValuesToListAdapter(
                                 ManageProjectActivity.this, dataSnapshot, "eventName"
                         ));
+                        final List<String> eventIds = Converters.convertSnapshotKeysToList(dataSnapshot);
                         eventNamesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                 String projectName = String.valueOf(parent.getItemAtPosition(position));
                                 String message = "Oops " + projectName + " is unavailable";
                                 Toast.makeText(ManageProjectActivity.this, message, Toast.LENGTH_SHORT).show();
+                                try {
+                                    manageEvent(eventIds.get(position));
+                                } catch (Exception e) {
+                                    Log.d(TAG, "manageEvent:failed", e);
+                                }
                             }
                         });
                     }
@@ -74,6 +82,13 @@ public class ManageProjectActivity extends BaseActivity {
                 Log.w(TAG, "loadProjects:onCancelled", databaseError.toException());
             }
         });
+    }
+
+    public void manageEvent(String eventId) {
+        Intent intent = new Intent(this, ManageEventActivity.class);
+        intent.putExtra("projectId", projectId);
+        intent.putExtra("eventId", eventId);
+        startActivity(intent);
     }
 
     public void newEvent(View view) {

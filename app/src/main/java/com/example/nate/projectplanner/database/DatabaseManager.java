@@ -1,10 +1,13 @@
 package com.example.nate.projectplanner.database;
 
 import android.provider.ContactsContract;
+import android.view.View;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,12 +25,16 @@ public class DatabaseManager {
         mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
+    public DatabaseReference fetchUser(String userId) {
+        return mDatabase.child("users").child(userId);
+    }
+
     public DatabaseReference fetchProject(String projectId) {
         return mDatabase.child("projects").child(projectId);
     }
 
-    public DatabaseReference fetchUser(String userId) {
-        return mDatabase.child("users").child(userId);
+    public DatabaseReference fetchEvent(String projectId, String eventId) {
+        return fetchProject(projectId).child(eventId);
     }
 
     public DatabaseReference fetchUserProjects(String userId) {
@@ -77,4 +84,18 @@ public class DatabaseManager {
 
         return eventId;
     }
+
+//    public void setButtonTextFromDatabaseReference(final View view, final Class<?> Type, final String id, final DatabaseReference ref, String key) {
+//        ref.child(key).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
 }

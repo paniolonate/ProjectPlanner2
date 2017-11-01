@@ -58,6 +58,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ManageProjectActivity" />
         </activity>
+        <activity android:name=".ManageEventActivity"></activity>
     </application>
 
 </manifest>
