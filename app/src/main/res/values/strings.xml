@@ -29,5 +29,9 @@
     <string name="button_verify_email">Verify Email</string>
     <string name="button_add_event">Add Event</string>
     <string name="button_add_dependency">Add Dependency</string>
+    <!-- descriptions -->
+    <string name="description_main">Welcome to ProjectPlanner the App.  A simple project management app that calculates the critical path of any one of your many projects! Get started by signing in with a valid email.</string>
+    <string name="logo_description">ProjectPlanner logo</string>
+
 
 </resources>
