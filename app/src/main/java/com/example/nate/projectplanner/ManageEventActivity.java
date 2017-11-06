@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nate.projectplanner.database.DatabaseManager;
@@ -21,9 +23,11 @@ public class ManageEventActivity extends BaseActivity {
     static String projectId;
     static String eventId;
 
+    // TextView
+    TextView mDurationEditText;
     // Buttons
-    Button mDurationButton;
     Button mAddDependencyButton;
+    Button mEditDurationButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +41,9 @@ public class ManageEventActivity extends BaseActivity {
         if (newProjectId != null) projectId = newProjectId;
         if (newEventId != null) eventId = newEventId;
 
-        mDurationButton = (Button) findViewById(R.id.button_duration);
+        mDurationEditText = (TextView) findViewById(R.id.textview_duration);
         mAddDependencyButton = (Button) findViewById(R.id.button_add_dependency);
+        mEditDurationButton = (Button) findViewById(R.id.button_duration);
 
         mDatabaseManager = new DatabaseManager();
         final DatabaseReference eventRef = mDatabaseManager.fetchEvent(projectId, eventId);
@@ -46,6 +51,7 @@ public class ManageEventActivity extends BaseActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 //                eventRef.child("duration").addValueEventListener();
+                mDatabaseManager.setTextFromDatabaseReference(mDurationEditText, eventRef, "duration");
             }
 
             @Override
@@ -53,7 +59,7 @@ public class ManageEventActivity extends BaseActivity {
 
             }
         });
-//        mDurationButton.setText(eventRef.child("duration").toString());
+//        mDurationEditText.setText(eventRef.child("duration").toString());
 //        mUrgencyButton.setText(eventRef.child("urgency").toString());
 
 

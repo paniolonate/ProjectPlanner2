@@ -1,7 +1,9 @@
 package com.example.nate.projectplanner.database;
 
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -85,17 +87,21 @@ public class DatabaseManager {
         return eventId;
     }
 
-//    public void setButtonTextFromDatabaseReference(final View view, final Class<?> Type, final String id, final DatabaseReference ref, String key) {
-//        ref.child(key).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
+    public void setTextFromDatabaseReference(final TextView textView, final DatabaseReference ref, String key) {
+        ref.child(key).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                try {
+                    textView.setText(dataSnapshot.getValue().toString());
+                } catch (NullPointerException e) {
+                    Log.d(TAG,"setTextFromDatabaseReference:getValue", e);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d(TAG,"setTextFromDatabaseReference:onCancelled", databaseError.toException());
+            }
+        });
+    }
 }
