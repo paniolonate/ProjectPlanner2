@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nate.projectplanner.database.DatabaseManager;
 import com.example.nate.projectplanner.database.Project;
@@ -51,16 +50,13 @@ public class ManageProjectActivity extends BaseActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         ListView eventNamesListView = (ListView) findViewById(R.id.list_events);
-                        eventNamesListView.setAdapter(Converters.convertSnapshotValuesToListAdapter(
+                        eventNamesListView.setAdapter(Converters.convertSnapshotChildValuesToListAdapter(
                                 ManageProjectActivity.this, dataSnapshot, "eventName"
                         ));
                         final List<String> eventIds = Converters.convertSnapshotKeysToList(dataSnapshot);
                         eventNamesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                String projectName = String.valueOf(parent.getItemAtPosition(position));
-                                String message = "Oops " + projectName + " is unavailable";
-                                Toast.makeText(ManageProjectActivity.this, message, Toast.LENGTH_SHORT).show();
                                 try {
                                     manageEvent(eventIds.get(position));
                                 } catch (Exception e) {
