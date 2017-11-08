@@ -1,12 +1,17 @@
 package com.example.nate.projectplanner;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,6 +65,7 @@ public class ManageEventActivity extends BaseActivity {
         mRemoveDependenciesModeButton = (Button) findViewById(R.id.button_remove_dependency);
         mEditDurationButton = (Button) findViewById(R.id.button_duration);
 
+
         mDatabaseManager = new DatabaseManager();
         final DatabaseReference eventRef = mDatabaseManager.fetchEvent(projectId, eventId);
         eventRef.addValueEventListener(new ValueEventListener() {
@@ -73,7 +79,13 @@ public class ManageEventActivity extends BaseActivity {
                             mDurationTextView.setText(
                                     getString(R.string.duration_fmt, Utility.toString(dataSnapshot.getValue()))
                             );
-                        } catch (NullPointerException e) {
+                            mEditDurationButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    showEditDurationDialog(view);
+                                }
+                            });
+                        } catch (Exception e) {
                             Log.d(TAG,"SetDuration:onDataChange", e);
                         }
                     }
@@ -136,6 +148,33 @@ public class ManageEventActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    public void showEditDurationDialog(View view) {
+        Integer[] durationOptionsArray = new Integer[50];
+        for (int i = 0; i < 50; i++) durationOptionsArray[i] = i + 1;
+        final ListAdapter durationOptionsAdapter = new ArrayAdapter<>(
+                ManageEventActivity.this, android.R.layout.simple_list_item_1, durationOptionsArray
+        );
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(ManageEventActivity.this);
+        builder.setTitle(R.string.dialog_choose_duration_title)
+                .setAdapter(durationOptionsAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int position) {
+                        dialogInterface.dismiss();
+                        mDatabaseManager.fetchEvent(projectId, eventId).child("duration")
+                                .setValue(durationOptionsAdapter.getItem(position));
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     public void setDuration(View view) {
