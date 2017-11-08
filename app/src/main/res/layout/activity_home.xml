@@ -40,10 +40,10 @@
         app:layout_constraintRight_toRightOf="parent">
 
         <TextView
-            android:id="@+id/editTextSignIn"
+            android:id="@+id/textViewSignedOut"
             android:text="@string/description_main"
             android:layout_width="310dp"
-            android:layout_height="50dp"
+            android:layout_height="110dp"
             android:layout_weight="3"
             android:ems="10"
             tools:layout_editor_absoluteX="16dp"
@@ -67,9 +67,10 @@
 
     <LinearLayout
         android:id="@+id/signed_in_buttons"
-        android:layout_width="0dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginLeft="30dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingTop="16dp"
@@ -80,6 +81,17 @@
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="gone"
         >
+
+        <TextView
+            android:id="@+id/textViewSignedIn"
+            android:text="@string/description_signed_in"
+            android:layout_width="310dp"
+            android:layout_height="60dp"
+            android:layout_weight="3"
+            android:ems="10"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="8dp"
+            style="@style/LightTextEditDescription"/>
 
         <Button
             android:id="@+id/button_new_project"
