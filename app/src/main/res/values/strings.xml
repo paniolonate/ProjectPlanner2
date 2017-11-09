@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ProjectPlanner</string>
     <string name="under_construction">Oops this feature is still under development ):</string>
-    <string name="signed_out">Signed Out</string>
+    <string name="signed_out">You are currently signed out, login or create a new account.</string>
     <string name="emailpassword_title_text">Login via Email</string>
     <string name="loading">Loading\.\.\.</string>
     <string name="auth_failed">Authentication Failed</string>
