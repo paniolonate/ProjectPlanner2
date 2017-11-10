@@ -143,6 +143,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
             android:onClick="addDependency"
+            android:colorButtonNormal="@color/colorAccent"
             android:text="@string/button_add_dependency"
             android:theme="@style/ThemeOverlay.MyLightButton"
             />
