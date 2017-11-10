@@ -6,49 +6,99 @@
     android:layout_height="match_parent"
     tools:context="com.example.nate.projectplanner.HomeActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+
+        android:contentDescription="@string/logo_description"
+        app:srcCompat="@drawable/icon2"
+        style="@style/LogoFormat"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+
     <LinearLayout
         android:id="@+id/signed_out_buttons"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingTop="16dp"
         android:visibility="visible"
-        >
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <TextView
+            android:id="@+id/textViewSignedOut"
+            android:text="@string/description_main"
+            android:layout_width="330dp"
+            android:layout_height="145dp"
+            android:layout_weight="3"
+            android:ems="10"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="8dp"
+            style="@style/LightTextViewDescription"/>
 
         <Button
             android:id="@+id/email_sign_in_button"
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:paddingTop="15dp"
             android:layout_weight="1"
             android:onClick="loginEmailPassword"
             android:text="@string/button_sign_in"
             android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/signed_in_buttons"
-        android:layout_width="fill_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginLeft="30dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingTop="16dp"
         android:weightSum="2.0"
         tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="160dp"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="gone"
         >
 
+        <TextView
+            android:id="@+id/textViewSignedIn"
+            android:text="@string/description_signed_in"
+            android:layout_width="310dp"
+            android:layout_height="60dp"
+            android:layout_weight="3"
+            android:ems="10"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="8dp"
+            style="@style/LightTextViewDescription"/>
+
         <Button
             android:id="@+id/button_new_project"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginTop="16dp"
             android:onClick="newProject"
             android:text="@string/button_new_project"
             android:theme="@style/ThemeOverlay.MyDarkButton" />

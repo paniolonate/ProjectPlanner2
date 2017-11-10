@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ProjectPlanner</string>
     <string name="under_construction">Oops this feature is still under development ):</string>
-    <string name="signed_out">Signed Out</string>
+    <string name="signed_out">You are currently signed out, login or create a new account.</string>
     <string name="emailpassword_title_text">Login via Email</string>
     <string name="loading">Loading\.\.\.</string>
     <string name="auth_failed">Authentication Failed</string>
@@ -11,6 +11,8 @@
     <string name="title_duration">Duration:</string>
     <string name="title_events">Events</string>
     <string name="title_dependencies">Dependencies</string>
+    <string name="title_new_event">New Event</string>
+    <string name="title_new_project">New Project</string>
     <!-- hints -->
     <string name="hint_new_project_enter_name">Enter project name</string>
     <string name="hint_new_event_enter_name">Enter event name</string>
@@ -33,17 +35,13 @@
     <string name="button_remove_dependency">Remove</string>
     <!-- dialog -->
     <string name="dialog_choose_duration_title">Choose Duration:</string>
-    <!-- arrays -->
-    <string-array name="duration_options">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-    </string-array>
+    <!-- descriptions -->
+    <string name="description_main">Welcome to ProjectPlanner the App.  A simple project management app that calculates the critical path of any one of your many projects! Get started by signing in with a valid email.</string>
+    <string name="logo_description">ProjectPlanner logo</string>
+    <string name="description_signed_in">Choose to create a new project or manage existing ones.</string>
+    <string name="description_list_projects">Manage your existing projects.</string>
+    <string name="description_manage_project">Manage events for a specific project.</string>
+    <string name="description_new_event">Create a new event for a specific project.</string>
+    <string name="description_new_project">Create a new project.</string>
 
 </resources>

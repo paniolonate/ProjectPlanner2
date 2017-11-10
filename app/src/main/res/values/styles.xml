@@ -3,7 +3,6 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
@@ -29,6 +28,45 @@
         <item name="android:layout_marginLeft">16dp</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
+
+    <!-- Logo Format -->
+    <style name="LogoFormat">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingTop">220dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:paddingLeft">50dp</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:alpha">0.05</item>
+
+    </style>
+
+    <!-- Light TextView Descriptions -->
+    <style name= "LightTextViewDescription">
+        <item name="android:layout_width">350dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:weightSum">2.0</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- Light List Text -->
+    <style name= "LightListText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- White EditTextHint -->
+    <style name="WhiteEditHint">
+
+
+    </style>
+
 
     <!-- Light EditTexts -->
     <style name="ThemeOverlay.MyLightEditText" parent="ThemeOverlay.AppCompat.Dark" />
@@ -60,13 +98,15 @@
         <item name="android:layout_weight">1</item>
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginRight">16dp</item>
+        <item name="colorButtonNormal">@color/colorAccent</item>
+
     </style>
 
     <!-- Dividers -->
     <style name="Divider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">3dp</item>
-        <item name="android:background">#C0C0C0</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
     </style>
 
     <style name="ThemeOverlay.FirebaseIcon" parent="AppTheme">
