@@ -10,6 +10,10 @@
     <string name="title_events">Events</string>
     <string name="title_dependencies">Dependencies</string>
     <string name="title_duration">Duration</string>
+    <string name="title_new_event">New Event</string>
+    <string name="title_new_project">New Project</string>
+
+
     <!-- hints -->
     <string name="hint_new_project_enter_name">Enter project name</string>
     <string name="hint_new_event_enter_name">Enter event name</string>
@@ -34,6 +38,12 @@
     <string name="logo_description">ProjectPlanner logo</string>
     <string name="description_signed_in">Choose to create a new project or manage existing ones.</string>
     <string name="description_list_projects">Manage your existing projects.</string>
+    <string name="description_manage_project">Manage events for a specific project.</string>
+    <string name="description_new_event">Create a new event for a specific project.</string>
+    <string name="description_new_project">Create a new project.</string>
+
+
+
 
 
 </resources>

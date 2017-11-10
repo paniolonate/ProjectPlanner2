@@ -76,7 +76,9 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="46dp" />
+            tools:layout_editor_absoluteX="46dp"
+            style="@style/WhiteEditHint"/>
+
         <ListView
             android:id="@+id/list_events"
             android:layout_width="fill_parent"

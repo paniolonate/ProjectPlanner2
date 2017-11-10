@@ -21,6 +21,38 @@
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent" />
 
+    <TextView
+        android:id="@+id/textview_events"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1.0"
+        android:text="@string/title_new_event"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="46dp"
+        style="@style/WhiteEditHint"/>
+
+    <TextView
+        android:text="@string/description_new_event"
+        android:layout_width="330dp"
+        android:layout_height="145dp"
+        android:layout_weight="3"
+        android:ems="10"
+        tools:layout_editor_absoluteX="27dp"
+        style="@style/LightTextViewDescription"
+        android:layout_marginTop="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/textview_events"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -30,12 +62,14 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        >
+        android:id="@+id/linearLayout">
         <EditText
             android:id="@+id/edittext_new_event_name"
             android:hint="@string/hint_new_event_enter_name"
             android:inputType="text"
-            style="@style/ThemeOverlay.HorizontalField"/>
+            android:textColorHint="@color/white"
+            style="@style/ThemeOverlay.HorizontalField"
+            />
 
         <Button
             android:id="@+id/button_create_new_event"
