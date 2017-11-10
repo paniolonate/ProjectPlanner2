@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -175,11 +174,6 @@ public class ManageEventActivity extends BaseActivity {
                 });
         AlertDialog dialog = builder.create();
         dialog.show();
-    }
-
-    public void setDuration(View view) {
-        Toast.makeText(this, "Oops can't do that yet!", Toast.LENGTH_SHORT).show();
-
     }
 
     public void addDependency(View view) {

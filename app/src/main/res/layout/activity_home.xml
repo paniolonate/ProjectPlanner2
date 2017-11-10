@@ -83,11 +83,12 @@
         >
 
         <TextView
-            android:id="@+id/textViewSignedIn"
+            android:id="@+id/textview_signed_in"
             android:text="@string/description_signed_in"
             android:layout_width="310dp"
             android:layout_height="60dp"
             android:layout_weight="3"
+            android:gravity="center"
             android:ems="10"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="8dp"

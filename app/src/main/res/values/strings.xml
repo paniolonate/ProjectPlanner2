@@ -38,7 +38,7 @@
     <!-- descriptions -->
     <string name="description_main">Welcome to ProjectPlanner the App.  A simple project management app that calculates the critical path of any one of your many projects! Get started by signing in with a valid email.</string>
     <string name="logo_description">ProjectPlanner logo</string>
-    <string name="description_signed_in">Choose to create a new project or manage existing ones.</string>
+    <string name="description_signed_in">Hello %s</string>
     <string name="description_list_projects">Manage your existing projects.</string>
     <string name="description_manage_project">Manage events for a specific project.</string>
     <string name="description_new_event">Create a new event for a specific project.</string>
