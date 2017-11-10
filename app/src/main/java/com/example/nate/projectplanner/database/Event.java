@@ -2,6 +2,7 @@ package com.example.nate.projectplanner.database;
 
 import com.google.firebase.database.Exclude;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,20 +10,20 @@ public class Event {
 
     public String eventName;
     public int duration;
-    public int urgencyLevel;
+    public ArrayList<String> dependencyIds;
 
     public Event() {
 
     }
 
     public Event(String eventName) {
-        this(eventName, 10, 0);
+        this(eventName, 1, null);
     }
 
-    public Event(String eventName, int duration, int urgencyLevel) {
+    public Event(String eventName, int duration, ArrayList<String> dependencyIds) {
         this.eventName = eventName;
         this.duration = duration;
-        this.urgencyLevel = urgencyLevel;
+        this.dependencyIds = dependencyIds;
     }
 
     // Event values in map format for json database
@@ -31,7 +32,7 @@ public class Event {
         HashMap<String, Object> eventMap = new HashMap<>();
         eventMap.put("eventName", eventName);
         eventMap.put("duration", duration);
-        eventMap.put("urgencyLevel", urgencyLevel);
+        eventMap.put("dependencies", dependencyIds);
 
         return eventMap;
     }

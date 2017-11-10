@@ -7,13 +7,12 @@
     <string name="auth_failed">Authentication Failed</string>
     <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
     <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="duration_fmt">Duration: %s</string>
+    <string name="title_duration">Duration:</string>
     <string name="title_events">Events</string>
     <string name="title_dependencies">Dependencies</string>
-    <string name="title_duration">Duration</string>
     <string name="title_new_event">New Event</string>
     <string name="title_new_project">New Project</string>
-
-
     <!-- hints -->
     <string name="hint_new_project_enter_name">Enter project name</string>
     <string name="hint_new_event_enter_name">Enter event name</string>
@@ -32,7 +31,10 @@
     <string name="button_create_account">Create Account</string>
     <string name="button_verify_email">Verify Email</string>
     <string name="button_add_event">Add Event</string>
-    <string name="button_add_dependency">Add Dependency</string>
+    <string name="button_add_dependency">Add</string>
+    <string name="button_remove_dependency">Remove</string>
+    <!-- dialog -->
+    <string name="dialog_choose_duration_title">Choose Duration:</string>
     <!-- descriptions -->
     <string name="description_main">Welcome to ProjectPlanner the App.  A simple project management app that calculates the critical path of any one of your many projects! Get started by signing in with a valid email.</string>
     <string name="logo_description">ProjectPlanner logo</string>
@@ -41,9 +43,5 @@
     <string name="description_manage_project">Manage events for a specific project.</string>
     <string name="description_new_event">Create a new event for a specific project.</string>
     <string name="description_new_project">Create a new project.</string>
-
-
-
-
 
 </resources>

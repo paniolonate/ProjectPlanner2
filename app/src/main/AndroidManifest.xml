@@ -58,7 +58,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ManageProjectActivity" />
         </activity>
-        <activity android:name=".ManageEventActivity"></activity>
+        <activity
+            android:name=".ManageEventActivity"
+            android:parentActivityName=".ManageProjectActivity">
+            !-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ManageProjectActivity" />
+        </activity>
+        <activity
+            android:name=".AddDependencyActivity"
+            android:parentActivityName=".ManageEventActivity">
+            !-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ManageEventActivity" />
+        </activity>
     </application>
 
 </manifest>

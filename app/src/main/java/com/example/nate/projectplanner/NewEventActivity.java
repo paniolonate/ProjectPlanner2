@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.example.nate.projectplanner.database.DatabaseManager;
 import com.example.nate.projectplanner.database.Project;
-import com.example.nate.projectplanner.database.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

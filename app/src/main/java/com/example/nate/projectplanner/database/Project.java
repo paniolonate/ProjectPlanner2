@@ -14,7 +14,7 @@ public class Project {
     public String projectName;
 
     public Project() {
-        // Default constructor required for calls to DataSnapshot.getValue(Post.class)
+        // Default constructor required for calls to DataSnapshot.getValue(Project.class)
     }
 
     public Project(String userId, String projectName) {

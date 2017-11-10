@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.nate.projectplanner.database.DatabaseManager;
 import com.example.nate.projectplanner.tools.Converters;
@@ -39,7 +38,7 @@ public class ListProjectsActivity extends BaseActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ListView projectNamesListView = (ListView) findViewById(R.id.list_projects);
-                projectNamesListView.setAdapter(Converters.convertSnapshotValuesToListAdapter(
+                projectNamesListView.setAdapter(Converters.convertSnapshotChildValuesToListAdapter(
                         ListProjectsActivity.this, dataSnapshot, "projectName"
                 ));
                 final List<String> projectIdsList = Converters.convertSnapshotKeysToList(dataSnapshot);
