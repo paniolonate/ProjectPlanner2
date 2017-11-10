@@ -9,8 +9,13 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.nate.projectplanner.database.DatabaseManager;
+import com.example.nate.projectplanner.tools.Utility;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 public class HomeActivity extends BaseActivity {
 
@@ -20,10 +25,13 @@ public class HomeActivity extends BaseActivity {
     private Button mListProjectsButton;
     private Button mNewProjectButton;
 
+    private TextView mSignedInTextView;
+
     private LinearLayout mSignedInLayout;
     private LinearLayout mSignedOutLayout;
 
     private FirebaseAuth mAuth;
+    private DatabaseManager mDatabaseManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +41,9 @@ public class HomeActivity extends BaseActivity {
         //Layouts
         mSignedOutLayout = (LinearLayout) findViewById(R.id.signed_out_buttons);
         mSignedInLayout = (LinearLayout) findViewById(R.id.signed_in_buttons);
+
+        // TextViews
+        mSignedInTextView = (TextView) findViewById(R.id.textview_signed_in);
 
         // Buttons
         mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
@@ -44,6 +55,20 @@ public class HomeActivity extends BaseActivity {
 //        mNewProjectButton.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+        mDatabaseManager = new DatabaseManager();
+
+        mDatabaseManager.fetchUser(mAuth.getCurrentUser().getUid()).child("email")
+                .addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                mSignedInTextView.setText(getString(R.string.description_signed_in, Utility.toString(dataSnapshot.getValue())));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // TODO
+            }
+        });
     }
 
     @Override

@@ -87,7 +87,7 @@
                 android:textAlignment="center"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:onClick="setDuration"
+                android:theme="@style/ThemeOverlay.MyLightButton"
                 />
 
         </LinearLayout>
