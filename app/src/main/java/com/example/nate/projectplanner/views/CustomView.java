@@ -15,6 +15,13 @@ import com.example.nate.projectplanner.R;
 /**
  * Created by Nathan Nahina on 11/12/2017.
  * Resource: https://www.youtube.com/watch?v=cfwO0Yui43g
+ * Better if we use circles, less variables to keep track of, just need x, y, radius, and Paint
+ * Get Modified Linked List representation of AON
+ * In onDraw() iterate through list, if node is not dependent it is the start, draw it
+ * If 1 child draw it directly below and also draw arrow
+ * If more than 1 child, draw children with same y, below, with different xs and arrows
+ * If no children exist, stop
+ * Stopped tutorial at 12:46
  */
 
 public class CustomView extends View {
@@ -28,7 +35,10 @@ public class CustomView extends View {
     private Paint mPaintNode;
 
     private int mNodeColor;
-    private int mNodeSize;
+    private int mNodeWidth;
+    private int mNodeHeight;
+
+    private Paint mPaintCircle;
 
     //Default constructors for super class, init() was added
     public CustomView(Context context) {
@@ -60,14 +70,21 @@ public class CustomView extends View {
         mRectNode = new Rect();
         mRectNode2 = new Rect();
         mPaintNode = new Paint(Paint.ANTI_ALIAS_FLAG); // This flag makes objects less pixelated
-        mPaintNode.setColor(Color.GREEN);
+
+        mPaintCircle = new Paint();
+        mPaintCircle.setAntiAlias(true);
+        mPaintCircle.setColor(Color.GREEN);
 
         if(set == null) // avoid null pointer exception
             return;
 
-        TypedArray ta = getContext().obtainStyledAttributes(set, R.styleable.CustomView);
+        TypedArray ta = getContext().obtainStyledAttributes(set, R.styleable.CustomView); // Container when using obtainStyledAttributes
 
         mNodeColor = ta.getColor(R.styleable.CustomView_node_color, Color.GREEN);
+        mNodeWidth = ta.getDimensionPixelSize(R.styleable.CustomView_node_height, rectWidth);
+        mNodeHeight = ta.getDimensionPixelSize(R.styleable.CustomView_node_width, rectHeight);
+
+        mPaintNode.setColor(mNodeColor);
 
         ta.recycle();
 
@@ -85,17 +102,25 @@ public class CustomView extends View {
 
         mRectNode.left = 400;
         mRectNode.top = 100;
-        mRectNode.right = mRectNode.left + rectWidth;
-        mRectNode.bottom = mRectNode.top + rectHeight;
+        mRectNode.right = mRectNode.left + mNodeWidth;
+        mRectNode.bottom = mRectNode.top + mNodeHeight;
 
         canvas.drawRect(mRectNode, mPaintNode);
 
         mRectNode2.left = 400;                       //x coordinate for top left of rect
-        mRectNode2.top = 100 + spacing + rectHeight; //y coordinate for top left of rect
-        mRectNode2.right = mRectNode2.left + rectWidth;  //x for bottom right
-        mRectNode2.bottom = mRectNode2.top + rectHeight; // y for bottom right
+        mRectNode2.top = 100 + spacing + mNodeHeight; //y coordinate for top left of rect
+        mRectNode2.right = mRectNode2.left + mNodeWidth;  //x for bottom right
+        mRectNode2.bottom = mRectNode2.top + mNodeHeight; // y for bottom right
 
         canvas.drawRect(mRectNode2, mPaintNode);
+
+        float cx, cy;
+        float radius = 100f;
+
+        cx = 200;
+        cy = 200;
+
+        canvas.drawCircle(cx, cy, radius, mPaintCircle);
 
     }
 }

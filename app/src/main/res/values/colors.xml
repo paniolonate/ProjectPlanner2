@@ -9,4 +9,6 @@
     <color name="grey_300">#E0E0E0</color>
     <color name="white">#FFFFFF</color>
 
+    <color name="nodeColor">#FF4081</color>
+
 </resources>

@@ -12,6 +12,9 @@
         android:id= "@+id/customView"
         android:layout_width="368dp"
         android:layout_height="495dp"
+        app:node_color="@color/nodeColor"
+
+
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"

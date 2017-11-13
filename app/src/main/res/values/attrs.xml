@@ -2,6 +2,8 @@
 <resources>
     <declare-styleable name="CustomView">
         <attr name="node_color" format="color"/>
-        <attr name="node_size" format="dimension"/>
-     </declare-styleable>
+        <attr name="node_width" format="dimension"/>
+        <attr name="node_height" format="dimension"/>
+
+    </declare-styleable>
 </resources>
