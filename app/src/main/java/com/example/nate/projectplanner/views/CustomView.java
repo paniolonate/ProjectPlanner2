@@ -13,7 +13,7 @@ import android.view.View;
 import com.example.nate.projectplanner.R;
 
 /**
- * Created by Nate on 11/12/2017.
+ * Created by Nathan Nahina on 11/12/2017.
  * Resource: https://www.youtube.com/watch?v=cfwO0Yui43g
  */
 
