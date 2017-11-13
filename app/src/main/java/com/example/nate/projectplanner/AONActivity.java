@@ -14,11 +14,21 @@ import com.example.nate.projectplanner.views.CustomView;
 
 public class AONActivity extends BaseActivity {
 
+    private CustomView mCustomView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aon);
 
-        CustomView customView = new CustomView(this);
+        mCustomView = (CustomView) findViewById(R.id.customView);
+
+        findViewById(R.id.btn_swap_color).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCustomView.swapColor();
+            }
+
+        });
     }
 }
