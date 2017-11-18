@@ -15,12 +15,8 @@ public class Converters {
 
     public static ListAdapter convertSnapshotValuesToListAdapter(Activity activity, DataSnapshot dataSnapshot) {
         List<String> list = new ArrayList<String>();
-        for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
-            try {
-                list.add(Utility.toString(postSnapShot.getValue()));
-            } catch (NullPointerException e){
-                Log.d(TAG, "convertSnapshotChildValuesToListAdapter", e);
-            }
+        for (DataSnapshot childSnapShot : dataSnapshot.getChildren()) {
+            list.add(Utility.toString(childSnapShot.getValue()));
         }
 
         return convertListToListAdapter(activity, list);
@@ -28,12 +24,8 @@ public class Converters {
 
     public static ListAdapter convertSnapshotChildValuesToListAdapter(Activity activity, DataSnapshot dataSnapshot, String childName) {
         List<String> list = new ArrayList<String>();
-        for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
-            try {
-                list.add(Utility.toString(postSnapShot.child(childName).getValue()));
-            } catch (NullPointerException e){
-                Log.d(TAG, "convertSnapshotChildValuesToListAdapter", e);
-            }
+        for (DataSnapshot childSnapShot : dataSnapshot.getChildren()) {
+            list.add(Utility.toString(childSnapShot.child(childName).getValue()));
         }
 
         return convertListToListAdapter(activity, list);
@@ -41,12 +33,8 @@ public class Converters {
 
     public static List<String> convertSnapshotChildValuesToList(DataSnapshot dataSnapshot, String childName) {
         List<String> list = new ArrayList<String>();
-        for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
-            try {
-                list.add(Utility.toString(postSnapShot.child(childName).getValue()));
-            } catch (NullPointerException e){
-                Log.d(TAG, "convertSnapshotValuesToList", e);
-            }
+        for (DataSnapshot childSnapShot : dataSnapshot.getChildren()) {
+            list.add(Utility.toString(childSnapShot.child(childName).getValue()));
         }
 
         return list;
@@ -54,12 +42,8 @@ public class Converters {
 
     public static List<String> convertSnapshotKeysToList(DataSnapshot dataSnapshot) {
         List<String> list = new ArrayList<String>();
-        for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
-            try {
-                list.add(postSnapShot.getKey());
-            } catch (NullPointerException e){
-                Log.d(TAG, "convertSnapshotKeysToList", e);
-            }
+        for (DataSnapshot childSnapShot : dataSnapshot.getChildren()) {
+            list.add(childSnapShot.getKey());
         }
         return list;
     }

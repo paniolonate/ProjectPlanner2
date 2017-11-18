@@ -20,6 +20,10 @@ public class Event {
         this(eventName, 1, null);
     }
 
+    public Event(String eventName, int duration) {
+        this(eventName, duration, null);
+    }
+
     public Event(String eventName, int duration, ArrayList<String> dependencyIds) {
         this.eventName = eventName;
         this.duration = duration;

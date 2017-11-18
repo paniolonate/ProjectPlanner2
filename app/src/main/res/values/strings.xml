@@ -7,9 +7,11 @@
     <string name="auth_failed">Authentication Failed</string>
     <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
     <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="critical_duration_fmt">Critical Duration: %s</string>
     <string name="duration_fmt">Duration: %s</string>
     <string name="title_duration">Duration:</string>
     <string name="title_events">Events</string>
+    <string name="title_critical_events">Critical Events</string>
     <string name="title_dependencies">Dependencies</string>
     <string name="title_new_event">New Event</string>
     <string name="title_new_project">New Project</string>
@@ -33,6 +35,8 @@
     <string name="button_add_event">Add Event</string>
     <string name="button_add_dependency">Add</string>
     <string name="button_remove_dependency">Remove</string>
+    <string name="button_critical_path">Critical Path</string>
+    <string name="button_manage_project">Manage Project</string>
     <!-- dialog -->
     <string name="dialog_choose_duration_title">Choose Duration:</string>
     <!-- descriptions -->

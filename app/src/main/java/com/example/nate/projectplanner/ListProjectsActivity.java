@@ -48,9 +48,9 @@ public class ListProjectsActivity extends BaseActivity {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                 try {
-                                    manageProject(projectIdsList.get(position));
+                                    projectHome(projectIdsList.get(position));
                                 } catch (Exception e) {
-                                    Log.d(TAG, "manageProject:failed", e);
+                                    Log.d(TAG, "projectHome:failed", e);
                                 }
                             }
                         }
@@ -65,8 +65,8 @@ public class ListProjectsActivity extends BaseActivity {
         });
     }
 
-    private void manageProject(String projectId) {
-        Intent intent = new Intent(this, ManageProjectActivity.class);
+    private void projectHome(String projectId) {
+        Intent intent = new Intent(this, ProjectHomeActivity.class);
         intent.putExtra("ProjectId", projectId);
         startActivity(intent);
     }

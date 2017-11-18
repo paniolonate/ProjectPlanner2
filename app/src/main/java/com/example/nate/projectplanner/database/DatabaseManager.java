@@ -23,6 +23,7 @@ public class DatabaseManager {
     public static final String EVENTS_KEY = "events";
     public static final String DEPENDENCIES_KEY = "dependencies";
     public static final String NON_DEPENDENCIES_KEY = "non-dependencies";
+    public static final String PROJECT_CRITICAL_KEY = "project-critical";
 
     // Database
     private DatabaseReference mDatabase;
@@ -46,6 +47,10 @@ public class DatabaseManager {
 
     public DatabaseReference fetchUserProjects(String userId) {
         return mDatabase.child(USER_PROJECTS_KEY).child(userId);
+    }
+
+    public DatabaseReference fetchProjectCriticalPath(String projectId) {
+        return mDatabase.child(PROJECT_CRITICAL_KEY).child(projectId);
     }
 
     public User addNewUser(String userId, String email, String name) {
@@ -77,10 +82,14 @@ public class DatabaseManager {
         return projectId;
     }
 
-    public String addNewEvent(final String projectId, final String eventName) { // TODO ensure that event names are unique
+    public String addNewEvent(final String projectId, final String eventName) {
+        return addNewEvent(projectId, eventName, 1);
+    }
+
+    public String addNewEvent(final String projectId, final String eventName, final int eventDuration) { // TODO ensure that event names are unique
         DatabaseReference projectRef = mDatabase.child(PROJECTS_KEY).child(projectId);
         final String eventId = projectRef.push().getKey();
-        final Event event = new Event(eventName);
+        final Event event = new Event(eventName, eventDuration);
         Map<String, Object> eventValues = event.toMap();
 
         Map<String, Object> childUpdates = new HashMap<>();
@@ -101,12 +110,7 @@ public class DatabaseManager {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//                final String keyOfEventChanged = dataSnapshot.getKey();
-//                final String nameOfEventChanged = Utility.toString(dataSnapshot.child("eventName").getValue());
-//                if (!eventId.equals(keyOfEventChanged)) {
-//                    Log.d(TAG,"onChildChanged: [" + keyOfEventChanged + "] = " + nameOfEventChanged + " for listener on " + eventName);
-//                    fetchEvent(projectId, eventId).child(NON_DEPENDENCIES_KEY).child(keyOfEventChanged).setValue(nameOfEventChanged);
-//                }
+
             }
 
             @Override

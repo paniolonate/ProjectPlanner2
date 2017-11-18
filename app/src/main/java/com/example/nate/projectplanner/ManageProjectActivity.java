@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.nate.projectplanner.criticalpath.CriticalPath;
 import com.example.nate.projectplanner.database.DatabaseManager;
 import com.example.nate.projectplanner.database.Project;
 import com.example.nate.projectplanner.tools.Converters;
@@ -92,4 +94,5 @@ public class ManageProjectActivity extends BaseActivity {
         intent.putExtra("projectId", projectId);
         startActivity(intent);
     }
+
 }

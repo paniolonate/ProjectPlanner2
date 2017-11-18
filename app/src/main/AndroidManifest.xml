@@ -44,11 +44,11 @@
         </activity>
         <activity
             android:name=".ManageProjectActivity"
-            android:parentActivityName=".ListProjectsActivity">
+            android:parentActivityName=".ProjectHomeActivity">
             !-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ListProjectsActivity" />
+                android:value=".ProjectHomeActivity" />
         </activity>
         <activity
             android:name=".NewEventActivity"
@@ -74,6 +74,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ManageEventActivity" />
         </activity>
+        <activity
+            android:name=".ProjectHomeActivity"
+            android:parentActivityName=".ListProjectsActivity">
+            !-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ListProjectsActivity" />
+        </activity>
+        <activity android:name=".CriticalPathActivity"></activity>
     </application>
 
 </manifest>
