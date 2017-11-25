@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.nate.projectplanner">
+          package="com.example.nate.projectplanner">
 
     <application
         android:allowBackup="true"
@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity">
+        <activity android:name=".aonb">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
@@ -23,7 +23,7 @@
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeActivity" />
+                android:value=".HomeActivity"/>
         </activity>
         <activity
             android:name=".ListProjectsActivity"
@@ -32,7 +32,7 @@
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeActivity" />
+                android:value=".HomeActivity"/>
         </activity>
         <activity
             android:name=".EmailPasswordActivity"
@@ -40,7 +40,7 @@
             !-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeActivity" />
+                android:value=".HomeActivity"/>
         </activity>
         <activity
             android:name=".ManageProjectActivity"
@@ -48,7 +48,7 @@
             !-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ListProjectsActivity" />
+                android:value=".ListProjectsActivity"/>
         </activity>
         <activity
             android:name=".NewEventActivity"
@@ -56,7 +56,7 @@
             !-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ManageProjectActivity" />
+                android:value=".ManageProjectActivity"/>
         </activity>
         <activity
             android:name=".ManageEventActivity"
@@ -64,7 +64,7 @@
             !-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ManageProjectActivity" />
+                android:value=".ManageProjectActivity"/>
         </activity>
         <activity
             android:name=".AddDependencyActivity"
@@ -72,7 +72,7 @@
             !-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ManageEventActivity" />
+                android:value=".ManageEventActivity"/>
         </activity>
     </application>
 

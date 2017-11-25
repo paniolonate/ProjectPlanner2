@@ -56,7 +56,7 @@ public class HomeActivity extends BaseActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabaseManager = new DatabaseManager();
-
+/*
         mDatabaseManager.fetchUser(mAuth.getCurrentUser().getUid()).child("email")
                 .addValueEventListener(new ValueEventListener() {
             @Override
@@ -69,6 +69,7 @@ public class HomeActivity extends BaseActivity {
                 // TODO
             }
         });
+*/
     }
 
     @Override
