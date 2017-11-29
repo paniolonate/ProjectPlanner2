@@ -10,11 +10,11 @@
     <com.example.nate.projectplanner.views.CustomView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="horizontal"
         android:gravity="center_horizontal"
+        android:orientation="horizontal"
         android:weightSum="1"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp"/>
 
 </android.support.constraint.ConstraintLayout>
