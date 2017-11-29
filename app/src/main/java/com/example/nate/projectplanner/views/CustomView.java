@@ -100,27 +100,58 @@ public class CustomView extends View {
     protected void onDraw(Canvas canvas) {
         canvas.drawColor(Color.LTGRAY);
 
-        mRectNode.left = 400;
-        mRectNode.top = 100;
-        mRectNode.right = mRectNode.left + mNodeWidth;
-        mRectNode.bottom = mRectNode.top + mNodeHeight;
+//        mRectNode.left = 400;
+//        mRectNode.top = 100;
+//        mRectNode.right = mRectNode.left + mNodeWidth;
+//        mRectNode.bottom = mRectNode.top + mNodeHeight;
+//
+//        canvas.drawRect(mRectNode, mPaintNode);
+//
+//        mRectNode2.left = 400;                       //x coordinate for top left of rect
+//        mRectNode2.top = 100 + spacing + mNodeHeight; //y coordinate for top left of rect
+//        mRectNode2.right = mRectNode2.left + mNodeWidth;  //x for bottom right
+//        mRectNode2.bottom = mRectNode2.top + mNodeHeight; // y for bottom right
+//
+//        canvas.drawRect(mRectNode2, mPaintNode);
 
-        canvas.drawRect(mRectNode, mPaintNode);
+        float xMiddle,xLeft, xRight, xFarLeft, xFarRight;
+        float yLevelOne, yLevelTwo, yLevelThree, yLevelFour, yLevelFive, yLevelSix;
+        float radius = 60f;
 
-        mRectNode2.left = 400;                       //x coordinate for top left of rect
-        mRectNode2.top = 100 + spacing + mNodeHeight; //y coordinate for top left of rect
-        mRectNode2.right = mRectNode2.left + mNodeWidth;  //x for bottom right
-        mRectNode2.bottom = mRectNode2.top + mNodeHeight; // y for bottom right
+        xMiddle = getWidth()/2;     // Centered
+        xLeft = getWidth()/3;       // 1/3rd Centered
+        xRight = xLeft + xLeft;        // 2/3rd Centered
+        xFarLeft = getWidth()/8;       // 1/8th Centered
+        xFarRight = xMiddle + xLeft;       // 7/8th Centered
 
-        canvas.drawRect(mRectNode2, mPaintNode);
 
-        float cx, cy;
-        float radius = 100f;
+        yLevelOne = 100;
+        yLevelTwo = 250;
+        yLevelThree = 400;
+        yLevelFour = 550;
+        yLevelFive = 700;
+        yLevelSix = 850;
 
-        cx = 200;
-        cy = 200;
 
-        canvas.drawCircle(cx, cy, radius, mPaintCircle);
+        canvas.drawCircle(xMiddle, yLevelOne, radius, mPaintCircle);
+        canvas.drawCircle(xLeft, yLevelTwo, radius, mPaintCircle);
+        canvas.drawCircle(xRight, yLevelTwo, radius, mPaintCircle);
+        canvas.drawCircle(xMiddle, yLevelThree, radius, mPaintCircle);
+        canvas.drawCircle(xMiddle, yLevelFour, radius, mPaintCircle);
+        canvas.drawCircle(xRight, yLevelFive, radius, mPaintCircle);
+        canvas.drawCircle(xLeft, yLevelFive, radius, mPaintCircle);
+        canvas.drawCircle(xFarLeft, yLevelSix, radius, mPaintCircle);
+        canvas.drawCircle(xFarRight, yLevelSix, radius, mPaintCircle);
+
+
+
+
+
+
+
+
+
+
 
     }
 }
