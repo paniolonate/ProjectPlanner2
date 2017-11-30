@@ -57,18 +57,21 @@ public class HomeActivity extends BaseActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabaseManager = new DatabaseManager();
 
-        mDatabaseManager.fetchUser(mAuth.getCurrentUser().getUid()).child("email")
+        if (mAuth.getCurrentUser() != null) {
+            mDatabaseManager.fetchUser(mAuth.getCurrentUser().getUid()).child("email")
                 .addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                mSignedInTextView.setText(getString(R.string.description_signed_in, Utility.toString(dataSnapshot.getValue())));
-            }
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        mSignedInTextView.setText(getString(R.string.description_signed_in, Utility.toString(dataSnapshot.getValue())));
+                    }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // TODO
-            }
-        });
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // TODO
+                    }
+                });
+        }
+
     }
 
     @Override
